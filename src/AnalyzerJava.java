@@ -28,7 +28,6 @@ public class AnalyzerJava extends Analyzer {
     private List<String> stopwords;
     private Version matchVersion;
     OffsetAttribute offsetAtt;
-    CharTermAttribute cAtt;
 
 
     public AnalyzerJava()throws Exception {
@@ -57,20 +56,19 @@ public class AnalyzerJava extends Analyzer {
 
         //To change body of generated methods, choose Tools | Templates.
 
-        final Tokenizer source = new LetterTokenizer();
+        final Tokenizer source = new MyTokenizer();
 
         TokenStream pipeline = source;
         pipeline = new StandardFilter(pipeline);
 
-        pipeline = new EnglishPossessiveFilter(pipeline);
+        //pipeline = new EnglishPossessiveFilter(pipeline);
 
-        pipeline = new ASCIIFoldingFilter(pipeline);
+        //pipeline = new ASCIIFoldingFilter(pipeline);
         pipeline = new LowerCaseFilter(pipeline);
         pipeline = new StopFilter(pipeline, new CharArraySet(stopwords,true));
         //pipeline = new PorterStemFilter(pipeline);
 
         offsetAtt = pipeline.addAttribute(OffsetAttribute.class);
-        cAtt= pipeline.addAttribute(CharTermAttribute.class);
 
 
         return new TokenStreamComponents(source, pipeline);
