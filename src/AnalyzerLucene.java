@@ -104,14 +104,14 @@ public class AnalyzerLucene {
         System.out.println(result.toString());
     }
 
-    public void displayTokens(  String text) throws IOException {
+    public void displayTokens( String nombre, String text) throws IOException {
 
         int i = 0;
 
         for (Analyzer an : analizadores){
             //System.out.println("Analizador "+an.getClass());
 
-            fw = new FileWriter("datosSalida/Analizador"+Analyzer_Cadenas[i]+".txt");
+            fw = new FileWriter("datosSalida/Analizador"+Analyzer_Cadenas[i]+nombre+".dat");
 
             bw = new BufferedWriter(fw);
 

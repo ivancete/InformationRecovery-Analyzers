@@ -1,4 +1,3 @@
-import org.apache.lucene.util.Version;
 import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.AutoDetectParser;
 import org.apache.tika.parser.ParseContext;
@@ -34,7 +33,7 @@ public class AnalyzerMain {
 
         AnalyzerLucene analycerlucene = new AnalyzerLucene();
 
-        String directorioDatos = System.getProperty("user.dir") + "/datosEntrada/";
+        String directorioDatos = System.getProperty("user.dir") + "/DatosIn/";
 
         File origen = new File(directorioDatos);
 
@@ -52,9 +51,7 @@ public class AnalyzerMain {
 
                 try {
 
-                    analycerlucene.displayTokens(text);
-
-                    return;
+                    analycerlucene.displayTokens(f,text);
 
                 } finally {
 
@@ -64,23 +61,23 @@ public class AnalyzerMain {
 
         /*PARTE 2*/
 
-        /*String ficheroJava = System.getProperty("user.dir") + "/datosEntradaEspeciales/AnalyzerUtils.java";
+        String ficheroJava = System.getProperty("user.dir") + "/datosEntradaEspeciales/AnalyzerUtils.java";
 
         AnalyzerJava aj = new AnalyzerJava();
 
         String textJava = textExtraction(ficheroJava);
 
-        aj.showTokenAnalyzed(textJava);*/
+        aj.showTokenAnalyzed(textJava);
 
 
         /*PARTE 3*/
-        /*String ficheroPalabras = System.getProperty("user.dir") + "/datosEntradaEspeciales/PalabrasEscondidas.txt";
+        String ficheroPalabras = System.getProperty("user.dir") + "/datosEntradaEspeciales/PalabrasEscondidas.txt";
 
         AnalyzerSpecialOne aso = new AnalyzerSpecialOne();
 
         String textWords = textExtraction(ficheroPalabras);
 
-        aso.showTokenAnalyzed(textWords);*/
+        aso.showTokenAnalyzed(textWords);
 
     }
 }
