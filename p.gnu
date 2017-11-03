@@ -12,11 +12,11 @@ set autoscale xy
 
 set xtics rotate # crucial line
 
-plot 'datosSalida/AnalizadorWhiteSpaceAnalyzerlibroIngles.epub.dat' using 1:2 title "NumberOccurrences" with linespoints
+plot 'datosSalida/AnalizadorWS.txt' using 1:2 title "NumberOccurrences" with linespoints
 
 set terminal svg
 
-set output "images/LibroIngles-occurrences-frequency-AnalyzerWhiteSpace.svg"
+set output "LibroIngles-occurrences-frequency-AnalyzerWS.svg"
 
 replot
 

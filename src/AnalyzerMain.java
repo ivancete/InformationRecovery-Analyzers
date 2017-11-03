@@ -61,23 +61,23 @@ public class AnalyzerMain {
 
         /*PARTE 2*/
 
-        String ficheroJava = System.getProperty("user.dir") + "/datosEntradaEspeciales/AnalyzerUtils.java";
+       /* String ficheroJava = System.getProperty("user.dir") + "/datosEntradaEspeciales/AnalyzerUtils.java";
 
         AnalyzerJava aj = new AnalyzerJava();
 
         String textJava = textExtraction(ficheroJava);
 
-        aj.showTokenAnalyzed(textJava);
+        aj.showTokenAnalyzed(textJava);*/
 
 
         /*PARTE 3*/
-        String ficheroPalabras = System.getProperty("user.dir") + "/datosEntradaEspeciales/PalabrasEscondidas.txt";
+        /*String ficheroPalabras = System.getProperty("user.dir") + "/datosEntradaEspeciales/PalabrasEscondidas.txt";
 
         AnalyzerSpecialOne aso = new AnalyzerSpecialOne();
 
         String textWords = textExtraction(ficheroPalabras);
 
-        aso.showTokenAnalyzed(textWords);
+        aso.showTokenAnalyzed(textWords);*/
 
     }
 }

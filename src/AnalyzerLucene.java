@@ -28,15 +28,6 @@ public class AnalyzerLucene {
     private Map<String, Integer> occurrences;
     private TreeMultimap<Integer, String> occurrencesSorted;
 
-    private static final String [] Analyzer_Cadenas = {
-            "WhiteSpaceAnalyzer",
-            "SimpleAnalyzer",
-            "StopAnalyzer",
-            "StandardAnalyzer",
-            "SpanishAnalyzer",
-            "EmailAnalyzer"
-    };
-
     public static final Analyzer[] analizadores = {
             new WhitespaceAnalyzer(),
             new SimpleAnalyzer(),
@@ -106,12 +97,17 @@ public class AnalyzerLucene {
 
     public void displayTokens( String nombre, String text) throws IOException {
 
-        int i = 0;
+        int i= 0;
 
         for (Analyzer an : analizadores){
+
+            occurrences = new HashMap<String, Integer>();
+            occurrencesSorted = TreeMultimap.create(Ordering.natural().reverse(),Ordering.natural());
+            totalOccurrences= 0;
+
             //System.out.println("Analizador "+an.getClass());
 
-            fw = new FileWriter("datosSalida/Analizador"+Analyzer_Cadenas[i]+nombre+".dat");
+            fw = new FileWriter("datosSalida/Analizador"+i+".txt");
 
             bw = new BufferedWriter(fw);
 
@@ -127,10 +123,15 @@ public class AnalyzerLucene {
 
                 for (String cadena : aux){
                     pw.println(j + "\t" + key);
+                    totalOccurrences++;
+                    System.out.println(cadena + "\t" + key);
                     j++;
                 }
             }
             i++;
+
+            System.out.println(totalOccurrences);
+            System.out.println("_____________________________________________________________________________________");
             pw.close();
             bw.close();
             fw.close();
