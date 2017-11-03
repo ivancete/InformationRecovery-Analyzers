@@ -30,7 +30,9 @@ public class AnalyzerMain {
 
     public static void main(String[] args) throws IOException, Exception {
 
-        /*AnalyzerLucene analycerlucene = new AnalyzerLucene();
+        /*PARTE 1*/
+
+        AnalyzerLucene analycerlucene = new AnalyzerLucene();
 
         String directorioDatos = System.getProperty("user.dir") + "/datosEntrada/";
 
@@ -58,15 +60,27 @@ public class AnalyzerMain {
 
                 }
             }
-        }*/
+        }
 
-        String ficheroJava = System.getProperty("user.dir") + "/datosEntrada/AnalyzerUtils.java";
+        /*PARTE 2*/
+
+        /*String ficheroJava = System.getProperty("user.dir") + "/datosEntradaEspeciales/AnalyzerUtils.java";
 
         AnalyzerJava aj = new AnalyzerJava();
 
         String textJava = textExtraction(ficheroJava);
 
-        aj.showTokenAnalyzed(textJava);
+        aj.showTokenAnalyzed(textJava);*/
+
+
+        /*PARTE 3*/
+        /*String ficheroPalabras = System.getProperty("user.dir") + "/datosEntradaEspeciales/PalabrasEscondidas.txt";
+
+        AnalyzerSpecialOne aso = new AnalyzerSpecialOne();
+
+        String textWords = textExtraction(ficheroPalabras);
+
+        aso.showTokenAnalyzed(textWords);*/
 
     }
 }

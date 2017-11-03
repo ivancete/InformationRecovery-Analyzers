@@ -5,19 +5,21 @@ import org.apache.lucene.analysis.tokenattributes.OffsetAttribute;
 
 import java.io.*;
 import java.util.*;
+import java.util.List;
 
-public class AnalyzerJava extends Analyzer {
+public class AnalyzerSpecialOne extends Analyzer{
+
 
     // Tokens longer than this length are discarded. Defaults to 50 chars. */
     private List<String> stopwords;
     OffsetAttribute offsetAtt;
 
 
-    public AnalyzerJava()throws Exception {
+    public AnalyzerSpecialOne()throws Exception {
 
         stopwords = new ArrayList<String>();
 
-        String fileStopWords = System.getProperty("user.dir") + "/stopWords/StopWordsJava.txt";
+        String fileStopWords = System.getProperty("user.dir") + "/stopWords/StopWordsPalabrasEscondidas.txt";
 
         File file = new File (fileStopWords);
 
@@ -33,29 +35,23 @@ public class AnalyzerJava extends Analyzer {
     }
 
     @Override
-    protected TokenStreamComponents createComponents(String string){
+    protected Analyzer.TokenStreamComponents createComponents(String string){
 
         //To change body of generated methods, choose Tools | Templates.
 
-        final Tokenizer source = new MyTokenizerJava();
+        final Tokenizer source = new MyTokenizerSpecialOne();
 
         TokenStream pipeline = source;
         pipeline = new StandardFilter(pipeline);
-
-        //pipeline = new EnglishPossessiveFilter(pipeline);
-
-        //pipeline = new ASCIIFoldingFilter(pipeline);
-        pipeline = new LowerCaseFilter(pipeline);
         pipeline = new StopFilter(pipeline, new CharArraySet(stopwords,true));
-        //pipeline = new PorterStemFilter(pipeline);
 
         offsetAtt = pipeline.addAttribute(OffsetAttribute.class);
 
 
-        return new TokenStreamComponents(source, pipeline);
+        return new Analyzer.TokenStreamComponents(source, pipeline);
     }
 
-    public void showTokenAnalyzed(String text)throws IOException{
+    public void showTokenAnalyzed(String text)throws IOException {
 
         TokenStream stream = this.tokenStream("field", new StringReader(text));
 
